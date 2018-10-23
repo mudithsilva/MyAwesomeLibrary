@@ -164,6 +164,7 @@ open class SwiftySideMenuViewController: UIViewController {
         dismissView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(dismissView)
         dismissView.alpha = 0.0
+        dismissView.clipsToBounds = true
         NSLayoutConstraint.activate([
             dismissView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             dismissView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
@@ -172,6 +173,7 @@ open class SwiftySideMenuViewController: UIViewController {
             ])
         
         let menueButton = UIButton()
+        menueButton.clipsToBounds = true
         menueButton.backgroundColor = UIColor.clear
         let podBundle = Bundle(for: SwiftySideMenuImageView.self)
         menueButton.setBackgroundImage(UIImage(named: "dismissViewOverlay", in: podBundle, compatibleWith: nil), for: UIControl.State.normal)
