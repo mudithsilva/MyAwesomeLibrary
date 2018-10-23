@@ -63,7 +63,7 @@ open class SwiftySideMenuViewController: UIViewController {
                 controller.view.bottomAnchor.constraint(equalTo: mainView.bottomAnchor)
             ])
             controller.didMove(toParent: self)
-        
+            
             self.changeTableViewAttributes()
         }
         
@@ -72,6 +72,37 @@ open class SwiftySideMenuViewController: UIViewController {
     override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //Mark: - Mange Device Orientation
+    
+    override open func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        self.sideView.alpha = 0
+        
+        if !SwiftySideMenuHelper.isMenuClosed {
+            self.menuClose(isUserForceClose: true)
+        }
+        
+        self.sideView.frame.size.width = size.width * 8/10
+        self.sideView.frame.size.height = size.height
+        SwiftySideMenuHelper.menuWidth = size.width * 8/10
+        self.sideView.center.x = -self.view.frame.size.height / 2
+        
+        let backGroundButtonView = self.dismissView.subviews.filter{$0 is UIButton}.first!
+        backGroundButtonView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.sideView.alpha = 1
+                self.sideView.layoutIfNeeded()
+                self.view.layoutIfNeeded()
+            })
+            
+        })
+        
     }
     
     func setControllerDefaultValues() {
@@ -201,17 +232,19 @@ open class SwiftySideMenuViewController: UIViewController {
     }
     
     @objc private func guestureStateRecogniser(_ sender: UIPanGestureRecognizer) {
-        let translation = sender.translation(in: view)
-        let progress = self.calculateProgress(
-            translationInView: translation,
-            viewBounds: view.bounds,
-            direction: .Left
-        )
-        self.mapGestureStateToInteractor(
-            gestureState: sender.state,
-            progress: progress,
-            velocity: sender.velocity(in: view).x) {
-                //                    print(self.sideView.frame.origin.x)
+        if !SwiftySideMenuHelper.isMenuClosed {
+            let translation = sender.translation(in: view)
+            let progress = self.calculateProgress(
+                translationInView: translation,
+                viewBounds: view.bounds,
+                direction: .Left
+            )
+            self.mapGestureStateToInteractor(
+                gestureState: sender.state,
+                progress: progress,
+                velocity: sender.velocity(in: view).x) {
+                    //                    print(self.sideView.frame.origin.x)
+            }
         }
     }
     
@@ -247,11 +280,23 @@ open class SwiftySideMenuViewController: UIViewController {
     
     func menuButtonClicked() {
         self.view.insertSubview(self.dismissView, belowSubview: self.sideView)
+        SwiftySideMenuHelper.isMenuClosed = false
         UIView.animate(withDuration: 0.5) {
             self.sideView.center.x = +self.sideView.frame.size.width / 2
             self.dismissView.alpha = 1.0
             self.view.layoutIfNeeded()
         }
+    }
+    
+    func menuButtonClosedClicked() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.sideView.center.x = -self.sideView.frame.size.width / 2
+            self.view.layoutIfNeeded()
+            self.dismissView.alpha = 0.0
+        }, completion: { completed in
+            self.view.sendSubviewToBack(self.dismissView)
+            SwiftySideMenuHelper.isMenuClosed = true
+        })
     }
     
     func menuOpen() {
@@ -269,6 +314,8 @@ open class SwiftySideMenuViewController: UIViewController {
                 self.dismissView.alpha = 0.0
             }, completion: { completed in
                 self.view.sendSubviewToBack(self.dismissView)
+                SwiftySideMenuHelper.isMenuClosed = true
+                
             })
         } else {
             UIView.animate(withDuration: 0.3, animations: {
@@ -277,6 +324,8 @@ open class SwiftySideMenuViewController: UIViewController {
                 self.dismissView.alpha = 0.0
             }, completion: { completed in
                 self.view.sendSubviewToBack(self.dismissView)
+                SwiftySideMenuHelper.isMenuClosed = true
+                
             })
         }
     }

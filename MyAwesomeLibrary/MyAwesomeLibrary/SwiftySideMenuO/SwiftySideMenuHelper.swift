@@ -15,6 +15,12 @@ public struct SwiftySideMenuHelper {
     static let percentThreshold:CGFloat = 0.5
     static var currentMenuWidth: CGFloat!
     static var menuWidth: CGFloat!
+    static var isMenuClosed: Bool = true {
+        didSet {
+            NotificationCenter.default.post(name: .didMenuStatusChanged, object: nil, userInfo: ["isMenuClosed": isMenuClosed])
+        }
+    }
+    
     
     static func shouldCloseMenu() -> Bool {
         if self.currentMenuWidth >= self.menuWidth / 2 {
