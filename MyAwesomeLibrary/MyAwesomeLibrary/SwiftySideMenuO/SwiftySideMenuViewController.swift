@@ -87,7 +87,7 @@ open class SwiftySideMenuViewController: UIViewController {
         self.sideView.frame.size.width = size.width * 8/10
         self.sideView.frame.size.height = size.height
         SwiftySideMenuHelper.menuWidth = size.width * 8/10
-        self.sideView.center.x = -self.view.frame.size.height / 2
+        self.sideView.center.x = -size.height / 2
         
         let backGroundButtonView = self.dismissView.subviews.filter{$0 is UIButton}.first!
         backGroundButtonView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
