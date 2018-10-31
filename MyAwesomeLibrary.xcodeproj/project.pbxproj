@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BA3DD1FE2189480F00E62F2C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3DD1FD2189480F00E62F2C /* StringExtension.swift */; };
 		BA3DD2002189497E00E62F2C /* MyGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3DD1FF2189497E00E62F2C /* MyGradientView.swift */; };
+		BA3DD22B2189DF2200E62F2C /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3DD22A2189DF2200E62F2C /* UIImageExtension.swift */; };
 		BAACB73821745875006034FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAACB73721745875006034FE /* AppDelegate.swift */; };
 		BAACB73D21745875006034FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAACB73B21745875006034FE /* Main.storyboard */; };
 		BAACB73F21745877006034FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAACB73E21745877006034FE /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 /* Begin PBXFileReference section */
 		BA3DD1FD2189480F00E62F2C /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		BA3DD1FF2189497E00E62F2C /* MyGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGradientView.swift; sourceTree = "<group>"; };
+		BA3DD22A2189DF2200E62F2C /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		BAACB73421745875006034FE /* MyAwesomeLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyAwesomeLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAACB73721745875006034FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAACB73C21745875006034FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -135,6 +137,14 @@
 			path = "String Extension";
 			sourceTree = "<group>";
 		};
+		BA3DD2292189DF2200E62F2C /* Image Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BA3DD22A2189DF2200E62F2C /* UIImageExtension.swift */,
+			);
+			path = "Image Extension";
+			sourceTree = "<group>";
+		};
 		BAACB72B21745875006034FE = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +199,7 @@
 		BAACB765217458AC006034FE /* MyAwesomeLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				BA3DD2292189DF2200E62F2C /* Image Extension */,
 				BA3DD1FC2189480F00E62F2C /* String Extension */,
 				BAACB771217458DA006034FE /* Alert Controllers */,
 				BAACB786217458DA006034FE /* App Data */,
@@ -456,6 +467,7 @@
 			files = (
 				BA3DD2002189497E00E62F2C /* MyGradientView.swift in Sources */,
 				BAACB78C217458DB006034FE /* FormValidator.swift in Sources */,
+				BA3DD22B2189DF2200E62F2C /* UIImageExtension.swift in Sources */,
 				BAACB791217458DB006034FE /* MyAwsomeButton.swift in Sources */,
 				BAACB792217458DB006034FE /* MyAwesomeView.swift in Sources */,
 				BAACB78E217458DB006034FE /* SimpleLoadingView.swift in Sources */,
