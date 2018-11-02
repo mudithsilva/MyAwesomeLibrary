@@ -18,7 +18,6 @@ class SimpleLoadingView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.initiateView()
     }
     
     required init?(coder aDecoder: NSCoder) {
