@@ -70,6 +70,13 @@ class AlertController {
             let alert = AlertController(viewController: viewController)
             alert.showOneAlert(title: errorTitle, message: status.rawValue, button: retryAction)
             
+        
+        case .serverTimeout:
+            
+            let retryAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action:UIAlertAction!) in })
+            let alert = AlertController(viewController: viewController)
+            alert.showOneAlert(title: errorTitle, message: status.rawValue, button: retryAction)
+            
         default:
             
             break
@@ -83,6 +90,7 @@ enum ConnectionError:String {
     case conenction = "Connection Error. Please try again later."
     case server = "Server Error. Please try again later."
     case sessionTimeOut = "Session Time out. Please sign in again."
+    case serverTimeout = "Server Time out. Please try again later"
     case none = "Completed!"
 }
 
