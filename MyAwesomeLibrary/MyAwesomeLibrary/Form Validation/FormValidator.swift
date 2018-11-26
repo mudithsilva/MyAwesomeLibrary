@@ -53,6 +53,7 @@ struct FormValidator {
         case TextFieldTypes.email: return "\(commonMsg) \"\(self.getBoldText(text: fieldName))\""
         case TextFieldTypes.digit: return "\(commonMsg) \"\(self.getBoldText(text: fieldName))\" \n\(self.centerText(text: "Hint:")) \n Phone number should include 10 digits."
         case TextFieldTypes.password : return "\(commonMsg) \"\(self.getBoldText(text: fieldName))\" \n\(self.centerText(text: "Hint:")) \n Password should include 4 - 20 characters. \n Password should not contain any white spaces."
+                    case TextFieldTypes.phoneNumber: return "\(commonMsg) \"\(self.getBoldText(text: fieldName))\" \n\(self.centerText(text: "Hint:")) \n Phone number should include 10 digits"
         }
     }
     
@@ -119,6 +120,7 @@ enum TextFieldTypes: String {
     case email = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
     case digit = "^[0-9]*$"
     case password =  "^[a-zA-Z0-9~!@#$%^&*(){}=?><:;'\"+-_]{4,20}$" //"^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$"
+    case phoneNumber = "^[0-9]{10}$" // 10 digit phone number
 }
 
 //Password Validators
