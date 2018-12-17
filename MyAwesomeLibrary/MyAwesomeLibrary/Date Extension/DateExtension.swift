@@ -45,6 +45,12 @@ extension Date {
         return Calendar.current.date(from: Calendar.current.dateComponents([.year], from: Calendar.current.startOfDay(for: self)))!
     }
     
+    func startOfTheDay() -> Date {
+        var comp: DateComponents = Calendar.current.dateComponents([.year, .month, .day], from: self)
+        comp.timeZone = TimeZone(abbreviation: "UTC")!
+        return Calendar.current.date(from: comp)!
+    }
+
     func endOfYear() -> Date {
         return Calendar.current.date(byAdding: DateComponents(year: 1, day: -1), to: self.startOfYear())!
     }
