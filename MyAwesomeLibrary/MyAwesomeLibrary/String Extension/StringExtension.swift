@@ -32,3 +32,12 @@ extension String {
  
      */
 }
+
+
+
+extension String{
+    func strikeThrough() -> NSAttributedString {
+        let strickThroughString = NSAttributedString(string: self, attributes: [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue])
+        return strickThroughString
+    }
+}
