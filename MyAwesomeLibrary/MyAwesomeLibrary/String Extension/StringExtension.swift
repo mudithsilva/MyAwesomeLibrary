@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
     
@@ -35,9 +36,15 @@ extension String {
 
 
 
-extension String{
+extension String {
     func strikeThrough() -> NSAttributedString {
         let strickThroughString = NSAttributedString(string: self, attributes: [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue])
         return strickThroughString
+    }
+    
+    func calculateTextWidth(fontName: String, fontSize: CGFloat, marigine: CGFloat) -> CGFloat {
+        let font: UIFont = UIFont(name: fontName, size: fontSize)!
+        let attributes = [NSAttributedString.Key.font: font]
+        return self.size(withAttributes: attributes).width + marigine
     }
 }
