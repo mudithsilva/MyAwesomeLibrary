@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA1B43B221EDB1B000641474 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1B43B121EDB1B000641474 /* UILabelExtension.swift */; };
 		BA208C2E21AB8DD300C2537D /* MyAwesomeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA208C2D21AB8DD300C2537D /* MyAwesomeTextView.swift */; };
 		BA3DD1FE2189480F00E62F2C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3DD1FD2189480F00E62F2C /* StringExtension.swift */; };
 		BA3DD2002189497E00E62F2C /* MyGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3DD1FF2189497E00E62F2C /* MyGradientView.swift */; };
@@ -65,6 +66,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA1B43B121EDB1B000641474 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		BA208C2D21AB8DD300C2537D /* MyAwesomeTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAwesomeTextView.swift; sourceTree = "<group>"; };
 		BA3DD1FD2189480F00E62F2C /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		BA3DD1FF2189497E00E62F2C /* MyGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGradientView.swift; sourceTree = "<group>"; };
@@ -137,6 +139,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA1B43B021EDB17800641474 /* UILabel Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BA1B43B121EDB1B000641474 /* UILabelExtension.swift */,
+			);
+			path = "UILabel Extension";
+			sourceTree = "<group>";
+		};
 		BA3DD1FC2189480F00E62F2C /* String Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +243,7 @@
 			children = (
 				BA9AB7AA21E885C7006BCD1D /* Tag Collection Flow Layout View */,
 				BA7CF9F221A99F4000B74E08 /* Camera Handler */,
+				BA1B43B021EDB17800641474 /* UILabel Extension */,
 				BA4C5FB6218C61A600BEBCD6 /* Double Extension */,
 				BA3DD2292189DF2200E62F2C /* Image Extension */,
 				BA3DD1FC2189480F00E62F2C /* String Extension */,
@@ -505,6 +516,7 @@
 				BA208C2E21AB8DD300C2537D /* MyAwesomeTextView.swift in Sources */,
 				BA3DD2002189497E00E62F2C /* MyGradientView.swift in Sources */,
 				BAACB78C217458DB006034FE /* FormValidator.swift in Sources */,
+				BA1B43B221EDB1B000641474 /* UILabelExtension.swift in Sources */,
 				BA3DD22B2189DF2200E62F2C /* UIImageExtension.swift in Sources */,
 				BAACB791217458DB006034FE /* MyAwsomeButton.swift in Sources */,
 				BAACB792217458DB006034FE /* MyAwesomeView.swift in Sources */,

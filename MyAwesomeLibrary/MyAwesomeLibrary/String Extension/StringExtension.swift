@@ -37,14 +37,63 @@ extension String {
 
 
 extension String {
+    
     func strikeThrough() -> NSAttributedString {
         let strickThroughString = NSAttributedString(string: self, attributes: [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue])
         return strickThroughString
     }
     
-    func calculateTextWidth(fontName: String, fontSize: CGFloat, marigine: CGFloat) -> CGFloat {
+    func getTextWidth(fontName: String, fontSize: CGFloat, marigine: CGFloat) -> CGFloat {
         let font: UIFont = UIFont(name: fontName, size: fontSize)!
         let attributes = [NSAttributedString.Key.font: font]
         return self.size(withAttributes: attributes).width + marigine
     }
+    
+    func getTextHeight(fontName: String, fontSize: CGFloat, marigine: CGFloat) -> CGFloat {
+        let font: UIFont = UIFont(name: fontName, size: fontSize)!
+        let attributes = [NSAttributedString.Key.font: font]
+        return self.size(withAttributes: attributes).height + marigine
+    }
+    
+    func getStringLabelHeight(fontName: String, fontSize: CGFloat, marigine: CGFloat, maxWidth: CGFloat, text: String) -> CGFloat {
+        let maxLabelWidth:CGFloat = maxWidth
+        let label = UILabel()
+        label.numberOfLines = 0
+        let addressFont = [NSAttributedString.Key.font: UIFont(name: fontName, size: fontSize)!]
+        let addr = text
+        label.attributedText = NSMutableAttributedString(string: addr , attributes: addressFont )
+        let neededSize:CGSize = label.sizeThatFits(CGSize(width: maxLabelWidth, height: CGFloat.greatestFiniteMagnitude))
+        return neededSize.height
+    }
+    
+    func localToUTC(date:String, fromFormat: String, toFormat: String) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = fromFormat
+        dateFormatter.calendar = NSCalendar.current
+        dateFormatter.timeZone = TimeZone.current
+        
+        let dt = dateFormatter.date(from: date)
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        dateFormatter.dateFormat = toFormat
+        
+        return dateFormatter.string(from: dt!)
+    }
+    
+    func UTCToLocal(date:String) -> String {
+        
+        let fromFormat: String = "HH:mm:ss ,yyyy-MM-dd"
+        let toFormat: String = "h:mm a, MMM dd yyy"
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = fromFormat
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        
+        let dt = dateFormatter.date(from: date)
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = toFormat
+        
+        return dateFormatter.string(from: dt!)
+    }
+    
 }
