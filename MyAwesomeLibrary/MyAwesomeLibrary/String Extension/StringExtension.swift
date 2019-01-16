@@ -55,15 +55,15 @@ extension String {
         return self.size(withAttributes: attributes).height + marigine
     }
     
-    func getStringLabelHeight(fontName: String, fontSize: CGFloat, marigine: CGFloat, maxWidth: CGFloat, text: String) -> CGFloat {
+    func getStringLabelHeight(fontName: String, fontSize: CGFloat, marigine: CGFloat, maxWidth: CGFloat) -> CGFloat {
         let maxLabelWidth:CGFloat = maxWidth
         let label = UILabel()
         label.numberOfLines = 0
         let addressFont = [NSAttributedString.Key.font: UIFont(name: fontName, size: fontSize)!]
-        let addr = text
+        let addr = self
         label.attributedText = NSMutableAttributedString(string: addr , attributes: addressFont )
         let neededSize:CGSize = label.sizeThatFits(CGSize(width: maxLabelWidth, height: CGFloat.greatestFiniteMagnitude))
-        return neededSize.height
+        return neededSize.height + marigine
     }
     
     func localToUTC(date:String, fromFormat: String, toFormat: String) -> String {
