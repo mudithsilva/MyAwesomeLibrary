@@ -50,6 +50,13 @@ extension Date {
         comp.timeZone = TimeZone(abbreviation: "UTC")!
         return Calendar.current.date(from: comp)!
     }
+    
+    func startOfTheDayGMT() -> Date {
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone(abbreviation: "GMT")!
+        return calendar.date(bySettingHour: 00, minute: 00, second: 0, of: self)!
+    }
+    
 
     func endOfYear() -> Date {
         return Calendar.current.date(byAdding: DateComponents(year: 1, day: -1), to: self.startOfYear())!
