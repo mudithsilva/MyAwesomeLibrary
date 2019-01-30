@@ -57,6 +57,12 @@ extension Date {
         return calendar.date(bySettingHour: 00, minute: 00, second: 0, of: self)!
     }
     
+    func getGMTTimeDate() -> Date {
+        var comp: DateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: self)
+        comp.calendar = Calendar.current
+        comp.timeZone = TimeZone(abbreviation: "GMT")!
+        return Calendar.current.date(from: comp)!
+    }
 
     func endOfYear() -> Date {
         return Calendar.current.date(byAdding: DateComponents(year: 1, day: -1), to: self.startOfYear())!
