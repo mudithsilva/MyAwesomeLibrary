@@ -65,6 +65,12 @@ import UIKit
         }
     }
     
+    @IBInspectable public var addBlurView: Bool = false {
+        didSet {
+            self.addBlurEffect()
+        }
+    }
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -82,6 +88,14 @@ import UIKit
             self.layer.shadowRadius = self.shadowRadius
         } else {
             self.layer.shadowOpacity = 0
+        }
+    }
+    
+    public func addBlurEffect() {
+        if addBlurView {
+            let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+            visualEffectView.frame = self.bounds
+            self.addSubview(visualEffectView)
         }
     }
     
